@@ -3,82 +3,64 @@ require:
   - rubocop-rails
   - rubocop-rspec
 
+Rails:
+  Enabled: true
+
 AllCops:
   Exclude:
     # 自動生成されるファイルや外部ライブラリは制御できないのでチェック対象外
     - bin/**/*
     - config/**/*
     - db/schema.rb
-    - db/migrate/*
     - node_modules/**/*
     - vendor/**/*
   TargetRubyVersion: 2.6
 
-# Avoid long blocks with many lines
+# ファイル丸ごとブロックに入りそうなファイルは行数制限から外す
 Metrics/BlockLength:
-  # ファイル丸ごとブロックに入りそうなファイルは行数制限から外す
   Exclude:
     - config/environments/*.rb
     - config/routes.rb
     - spec/factories/*
     - spec/**/*_spec.rb
+    - 'lib/tasks/auto_annotate_models.rake'
 
-Metrics/LineLength:
-  Max: 120
-
+# 日本語でのコメントを許可
 Style/AsciiComments:
   Enabled: false
 
-# The `context_dependent` style checks that the last parameter
-# doesn't have braces around it, but requires braces if the
-# second to last parameter is also a hash literal.
-# https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Style/BracesAroundHashParameters
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
-
+# モジュール名::クラス名の定義を許可
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+  Enabled: false
 
+# コメントなしクラスを許可
 Style/Documentation:
   Enabled: false
 
-################################
-# rubocop-rails
-# https://github.com/rubocop-hq/rubocop-rails
-################################
-# https://github.com/rubocop-hq/rubocop-jp/issues/54
-# capybaraのfind_by_idが、railsのfind_by_id(使ってはいけない)と検知されエラーになるのを防ぐ
-Rails/DynamicFindBy:
-  Exclude:
-    - spec/features/**/*
-
-# update_allやincrement!などのvalidationを行わない更新処理を許容したい
-Rails/SkipsModelValidations:
+# 1 行の文字数が長くても許可
+Layout/LineLength:
   Enabled: false
 
-Rails/UnknownEnv:
-  Environments:
-    - development
-    - test
-    - staging
-    - production
+# ABC サイズは Spec ディレクトリを除外
+Metrics/AbcSize:
+  Exclude:
+    - 'spec/**/**/*'
+
+# メソッド行数は Spec ディレクトリを除外
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/**/**/*'
 
 ################################
 # rubocop-rspec
 # https://github.com/rubocop-hq/rubocop-rspec
 ################################
 
-# RSpecのContextの文言を日本語で書いているため、英語のフォーマット指定をdisableする
+# 日本語での RSpec context を許可
 RSpec/ContextWording:
   Enabled: false
 
-# RSpecのdescribeを文言にしたいケースもあるため。
-# 1つのcontrollerのアクションを複数のファイルでテストするケースや
-# 複数のclassをまとめて1つのcontrollerでテストする時など
-RSpec/DescribeClass:
-  Enabled: false
-
-# APIの返却値テストなど、たくさんの項目を1つのitブロック内でテストしたい
+# エクスペクテーションが長くても許可
 RSpec/ExampleLength:
   Enabled: false
 
@@ -87,7 +69,7 @@ RSpec/ExampleLength:
 RSpec/LetSetup:
   Enabled: false
 
-# APIの返却値テストなど、複数の項目を1つのitブロック内でテストしたい
+# 複数のエクスペクテーションを許可
 RSpec/MultipleExpectations:
   Enabled: false
 
@@ -95,7 +77,3 @@ RSpec/MultipleExpectations:
 # ただ、これ以上深くなる場合は、ファイルを分けたり、describeとして分けたりしてほしい
 RSpec/NestedGroups:
   Max: 4
-
-# APIの返却値テストなど、たくさんの項目を1つのitブロック内でテストしたい
-RSpec/ScatteredLet:
-  Enabled: false
