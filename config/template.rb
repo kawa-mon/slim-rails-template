@@ -1,6 +1,10 @@
+copy_file 'config/application.yml'
+
+copy_file 'config/initializers/0_settings.rb'
+copy_file 'config/initializers/generators.rb'
+
 copy_file 'config/environment.rb'
 copy_file 'config/puma.rb'
-copy_file 'config/initializers/generators.rb'
 
 insert_into_file 'config/environments/development.rb', before: /\nend\n\z/ do
   <<-'RUBY'

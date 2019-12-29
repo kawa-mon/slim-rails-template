@@ -50,7 +50,8 @@ $ rails new . -T -d postgresql -m [path to your rails-template]
   - `$ rubycritic` で静的コード解析ができる
 - [seed-fu](https://github.com/mbleigh/seed-fu)
   - db/fixtures 配下に初期データをDSLで書き、`$ bin/rails db:seed_fu` で作成・更新できる
-- settingslogic
+- [settingslogic](https://github.com/binarylogic/settingslogic)
+  - config/application.yml で定数を一元管理できる。 `Settings.hoge` の形式で呼び出せる
 - [simplecov](https://github.com/colszowka/simplecov)
   - `$ bin/rspec` で coverage/index.html にテストカバレッジ結果を得られる
 - slim系
