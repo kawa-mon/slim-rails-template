@@ -48,7 +48,8 @@ $ rails new . -T -d postgresql -m [path to your rails-template]
 - rubocop系
 - [rubycritic](https://github.com/whitesmith/rubycritic)
   - `$ rubycritic` で静的コード解析ができる
-- seed-fu
+- [seed-fu](https://github.com/mbleigh/seed-fu)
+  - db/fixtures 配下に初期データをDSLで書き、`$ bin/rails db:seed_fu` で作成・更新できる
 - settingslogic
 - [simplecov](https://github.com/colszowka/simplecov)
   - `$ bin/rspec` で coverage/index.html にテストカバレッジ結果を得られる
