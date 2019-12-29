@@ -22,6 +22,8 @@ def remove_unuse_files
 end
 
 def create_use_files
+  copy_file '.circleci/config.yml'
+  copy_file '.gitignore'
   copy_file '.pryrc'
   copy_file '.rspec'
   copy_file '.rubocop.yml'
