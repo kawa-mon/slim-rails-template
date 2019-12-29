@@ -1,4 +1,4 @@
-# rails_template
+# rails-template
 ## 概要
 これは、Railsアプリケーションを作る際にテンプレートとして使用することで、  
 新しいプロジェクトに、高速に必要不可欠なgemや設定を組み込むことができるテンプレートです。
@@ -8,16 +8,10 @@
 rails newをした後に、その個人・組織のルールに則り、アプリケーションの設定をいくつも追加すると思います。  
 テンプレートとして、必要な設定を全て網羅していれば、素早く、モレなく、設定が完了します。  
 
-僕は、後からlinterを追加して、ひーひー言いたくありません。
-
-また、READMEも、フォーマットを固定している企業は多くありません。  
-その結果、プロジェクト移った際に、必要な環境構築や設定などが分からず、有識者に直接聞くことがあるかと思います。  
-このテンプレートでは、READMEのフォーマットも指定しており、あとは製作者に必要なことそう目てもらうだけになっています。
-
 ## 事前準備
 このテンプレートは以下のバージョンで動くことを保証しています。  
 
-- MySQL
+- PostgreSQL
 - ruby 2.6.5
 - Rails 6.0.x
 
@@ -26,25 +20,34 @@ rails newをした後に、その個人・組織のルールに則り、アプ�
 ## 使用方法
 1. gitclone  
 ```
-$ git clone https://github.com/hotatekaoru/rails_template.git
+$ git clone https://github.com/kawa-mon/rails-template.git
 ```
 
 2. rails new
 ```
-$ rails new project_name -m path/to/rails_template -d mysql
+$ rails new . -T -d postgresql -m [path to your rails-template]
 ```
 
 3. 作られた todo.md に沿って、必要な設定を追加
 
 ## 追加しているgem
-- [fasterer](https://github.com/DamirSvrtan/fasterer)
-- [haml-lint](https://github.com/sds/haml-lint)
-- [rubocop](https://github.com/rubocop-hq/rubocop)
-- [settingslogic](https://github.com/binarylogic/settingslogic)
-- [bullet](https://github.com/flyerhzm/bullet)
+- annotate系
+- awesome_print
+- better_errors
+- brakeman
+- bullet  
   デフォルトで、development/test環境では、N+1がある場合は500になるようにしています。
-- [kaminari](https://github.com/kaminari/kaminari)
-- [rollbar](https://github.com/rollbar/rollbar-gem)
-- [newrelic](https://github.com/newrelic/rpm)
-- sidekiq
-- rspec
+- factory_bot_rails
+- kaminari
+- meta-tags
+- pg
+- pry系
+- rails-erd
+- rails-flog
+- rspec系
+- rubocop系
+- rubycritic
+- seed-fu
+- settingslogic
+- simplecov
+- slim系
