@@ -36,3 +36,4 @@ yarn-debug.log*
 .vscode/**
 .idea/*
 /public/uploads
+coverage/**

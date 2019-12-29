@@ -49,5 +49,6 @@ $ rails new . -T -d postgresql -m [path to your rails-template]
 - rubycritic
 - seed-fu
 - settingslogic
-- simplecov
+- [simplecov](https://github.com/colszowka/simplecov)
+  - `$ bin/rspec` で coverage/index.html にテストカバレッジ結果を得られる
 - slim系
