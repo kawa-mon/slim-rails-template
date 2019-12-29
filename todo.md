@@ -1,6 +1,3 @@
-- [ ] application.ymlのhostなどの設定
 - [ ] `rbenv bundle exec rubocop -a`  でデフォルト生成ファイルの記載修正
 - [ ] `bin/rspec`  でテスト動作の確認
 - [ ] README.md に必要な設定を記載
-- [ ] Rollbarの設定、設定ファイル（config/initializers/rollbar.rb）の修正
-- [ ] NewRelicの設定、設定ファイル(config/newrelic.yml)の修正
