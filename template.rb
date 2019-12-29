@@ -16,6 +16,7 @@ def remove_unuse_files
   remove_dir 'app/jobs'
   remove_file 'config/cable.yml'
   remove_file 'config/storage.yml'
+  remove_file 'config/locales/en.yml'
   remove_dir 'storage'
   remove_dir 'test'
 end
