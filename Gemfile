@@ -7,33 +7,27 @@ ruby '~> 2.6.5'
 
 gem 'rails', '~> 6.0'
 
-gem 'bootsnap', require: false
-gem 'haml-rails'
-gem 'kaminari'
-gem 'meta-tags'
-gem 'mysql2'
-gem 'newrelic_rpm'
-gem 'puma'
-gem 'rack-cors'
-gem 'rollbar'
-gem 'sass-rails'
-gem 'seed-fu'
-gem 'settingslogic'
-gem 'sidekiq'
-gem 'sprockets'
-gem 'uglifier'
-gem 'webpacker'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'jbuilder', '~> 2.7'
+gem 'puma', '~> 4.1'
+gem 'sass-rails', '>= 6'
+gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'webpacker', '~> 4.0'
 
 group :development, :test do
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  gem 'awesome_print'
   gem 'brakeman'
   gem 'bullet'
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'fasterer', require: false
-  gem 'haml_lint', require: false
-  # https://qiita.com/kou_pg_0131/items/e9affefa7fad4fb56fc5 でおちるspecがある
-  # https://github.com/rubyforgood/partner/issues/167 が入るまではとりあえずbeta版
-  gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+  gem 'rails-flog', require: 'flog'
+  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
@@ -42,18 +36,33 @@ group :development, :test do
 end
 
 group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
+
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'listen'
-  gem 'spring'
+  gem 'rails-erd'
   gem 'spring-commands-rspec'
-  gem 'spring-watcher-listen'
 end
 
 group :test do
-  gem 'capybara'
-  gem 'rspec-sidekiq'
-  gem 'rspec_junit_formatter'
+  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'webdrivers'
+
+  gem 'rspec_junit_formatter'
   gem 'simplecov', require: false
 end
+
+# 追加 gem
+gem 'annotate'
+gem 'html2slim'
+gem 'kaminari'
+gem 'meta-tags'
+gem 'migration_comments'
+gem 'pg', '>= 0.18', '< 2.0'
+gem 'seed-fu'
+gem 'settingslogic'
+gem 'slim-rails'

@@ -1,5 +1,5 @@
 def setup_rails_apllication!
-  p '👍 Start setup_rails_apllication!'
+  puts '== Start setup_rails_apllication!  🏃👍  =='
 
   setup_source_paths
 
@@ -8,26 +8,27 @@ def setup_rails_apllication!
   remove_unuse_files
   create_use_files
 
-  p '✌️ Finish setup_rails_apllication!'
+  puts '== Finish setup_rails_apllication!  ✨🎉  =='
 end
 
 def remove_unuse_files
   remove_dir 'app/channels'
   remove_dir 'app/jobs'
   remove_file 'config/cable.yml'
-  remove_file 'config/storage.yml'
+  remove_file 'config/locales/en.yml'
   remove_dir 'storage'
   remove_dir 'test'
 end
 
 def create_use_files
-  empty_directory_with_keep_file 'app/validators'
-  empty_directory_with_keep_file 'app/view_objects'
-  empty_directory_with_keep_file 'app/workers'
-  copy_file '.fasterer.yml'
-  copy_file '.haml-lint.yml'
+  copy_file '.circleci/config.yml'
+  copy_file '.gitignore'
+  copy_file '.pryrc'
+  copy_file '.rspec'
   copy_file '.rubocop.yml'
   copy_file 'todo.md'
+  copy_file 'PULL_REQUEST_TEMPLATE.md'
+  copy_file 'Procfile'
 
   apply 'bin/template.rb'
   apply 'config/template.rb'
@@ -37,8 +38,19 @@ end
 # rails newだけで即座にsample pageを作れた方が、DX的にありがたいので、
 # setupやscaffoldをrails newの中で行う
 def run_rails_setup_commands!
+  puts '== Start run_rails_setup_commands!  🚴💪  =='
+  run 'curl -s https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -o config/locales/ja.yml'
+  run 'bundle exec erb2slim app/views/layouts/ --delete'
+  run 'bundle exec rails g erd:install'
+  run 'bundle exec rails generate meta_tags:install'
+  run 'bin/rails g annotate:install'
+  copy_file 'lib/tasks/auto_annotate_models.rake'
+  copy_file 'lib/tasks/auto_generate_diagram.rake'
+  rails_command 'db:create'
+  rails_command 'db:migrate'
   run 'bin/setup'
   run 'bin/webpack'
+  puts '== Finish run_rails_setup_commands!  ✨🎊  =='
 end
 
 def scaffold_sample_pages
@@ -54,7 +66,7 @@ def git_commit
 
   git :init
   git add: '-A .'
-  git commit: %Q{ -m '🎁 Initial commit' }
+  git commit: %( -m '🎁 Initial commit' )
 end
 
 # https://github.com/erikhuda/thor/blob/2115b7accb42e0acca330ba694552322386994a5/lib/thor/actions.rb#L127
@@ -66,6 +78,9 @@ def setup_source_paths
 end
 
 setup_rails_apllication!
-run_rails_setup_commands!
-scaffold_sample_pages
-git_commit
+
+after_bundle do
+  run_rails_setup_commands!
+  scaffold_sample_pages
+  git_commit
+end
