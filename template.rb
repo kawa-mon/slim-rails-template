@@ -21,11 +21,6 @@ def remove_unuse_files
 end
 
 def create_use_files
-  empty_directory_with_keep_file 'app/validators'
-  empty_directory_with_keep_file 'app/view_objects'
-  empty_directory_with_keep_file 'app/workers'
-  copy_file '.fasterer.yml'
-  copy_file '.haml-lint.yml'
   copy_file '.rubocop.yml'
   copy_file 'todo.md'
 
