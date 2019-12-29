@@ -46,7 +46,8 @@ $ rails new . -T -d postgresql -m [path to your rails-template]
 - rails-flog
 - rspec系
 - rubocop系
-- rubycritic
+- [rubycritic](https://github.com/whitesmith/rubycritic)
+  - `$ rubycritic` で静的コード解析ができる
 - seed-fu
 - settingslogic
 - [simplecov](https://github.com/colszowka/simplecov)

@@ -8,8 +8,9 @@
 
 動作確認方法
 ---
-- [ ] bundle exec rubocop -a
-- [ ] bin/rspec
+- [ ] `$ bundle exec rubocop` で規約違反がないこと
+- [ ] `$ bin/rspec` でテストグリーンであること
+- [ ] `$ rubycritic` でD以下がないこと
 
 導入gem
 ---
