@@ -8,7 +8,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'spec_helper'
 require 'capybara/rails'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -26,7 +25,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 
-Dir[Rails.root.join('spec/supports/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/supports/**/*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -42,9 +41,6 @@ SimpleCov.start do
   add_group 'Controllers', 'app/controllers'
   add_group 'Helpers', 'app/helpers'
   add_group 'Models', 'app/models'
-  add_group 'Validators', 'app/validators'
-  add_group 'ViewObjects', 'app/view_objects'
-  add_group 'Workers', 'app/workers'
   add_filter '/vendor/'
   add_filter '/spec/'
 end
@@ -109,9 +105,3 @@ end
 
 Capybara.javascript_driver = :headless_chrome
 Capybara.default_max_wait_time = 5
-
-# https://github.com/philostler/rspec-sidekiq/wiki/FAQ-&-Troubleshooting
-RSpec::Sidekiq.configure do |config|
-  config.warn_when_jobs_not_processed_by_sidekiq = false
-  config.clear_all_enqueued_jobs = true
-end
