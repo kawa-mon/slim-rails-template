@@ -42,6 +42,7 @@ def run_rails_setup_commands!
   run 'curl -s https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -o config/locales/ja.yml'
   run 'bundle exec erb2slim app/views/layouts/ --delete'
   run 'bundle exec rails g erd:install'
+  run 'bundle exec rails generate meta_tags:install'
   run 'bin/rails g annotate:install'
   copy_file 'lib/tasks/auto_annotate_models.rake'
   copy_file 'lib/tasks/auto_generate_diagram.rake'

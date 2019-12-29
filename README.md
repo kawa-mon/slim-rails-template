@@ -39,7 +39,8 @@ $ rails new . -T -d postgresql -m [path to your rails-template]
   デフォルトで、development/test環境では、N+1がある場合は500になるようにしています。
 - factory_bot_rails
 - kaminari
-- meta-tags
+- [meta-tags](https://github.com/kpumuk/meta-tags)
+  - SEO対策用gem
 - pg
 - pry系
 - rails-erd
