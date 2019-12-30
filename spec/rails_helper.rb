@@ -52,7 +52,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -86,6 +86,14 @@ RSpec.configure do |config|
       Bullet.perform_out_of_channel_notifications if Bullet.notification?
       Bullet.end_request
     end
+  end
+
+  # テストスイートの実行が始まる前にスクリーンショットを削除
+  config.before(:suite) do
+    FileUtils.rm_rf(Dir[Rails.root.join('tmp/capybara')])
+    FileUtils.rm_rf(Dir[Rails.root.join('tmp/screenshots')])
+    FileUtils.makedirs [Rails.root.join('tmp/capybara'),
+                        Rails.root.join('tmp/screenshots')]
   end
 end
 
