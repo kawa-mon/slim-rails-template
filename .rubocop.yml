@@ -19,11 +19,18 @@ AllCops:
 # ファイル丸ごとブロックに入りそうなファイルは行数制限から外す
 Metrics/BlockLength:
   Exclude:
-    - config/environments/*.rb
-    - config/routes.rb
-    - spec/factories/*
-    - spec/**/*_spec.rb
-    - 'lib/tasks/auto_annotate_models.rake'
+    - spec/**/**/*
+    - lib/tasks/auto_annotate_models.rake
+
+# 1 行の文字数が長くても許可
+Layout/LineLength:
+  Enabled: false
+
+# メソッド行数は Spec ディレクトリを除外
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - spec/**/**/*
 
 # 日本語でのコメントを許可
 Style/AsciiComments:
@@ -37,19 +44,16 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
-# 1 行の文字数が長くても許可
-Layout/LineLength:
-  Enabled: false
-
 # ABC サイズは Spec ディレクトリを除外
 Metrics/AbcSize:
+  Max: 20
   Exclude:
-    - 'spec/**/**/*'
+    - spec/**/**/*
 
-# メソッド行数は Spec ディレクトリを除外
-Metrics/MethodLength:
+# 桁揃えが綺麗にならないことが多いので migration は除外
+Layout/ExtraSpacing:
   Exclude:
-    - 'spec/**/**/*'
+    - db/migrate/*.rb
 
 ################################
 # rubocop-rspec
