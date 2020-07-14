@@ -1,4 +1,4 @@
-- [ ] .circleci/config.yml 23行目のデータベース名を変更
-- [ ] `rbenv bundle exec rubocop -a`  でデフォルト生成ファイルの記載修正
-- [ ] `bin/rspec`  でテスト動作の確認
+- [ ] .circleci/config.yml 23 行目のデータベース名を変更
+- [ ] `rbenv bundle exec rubocop -a` でデフォルト生成ファイルの記載修正
+- [ ] `bin/rspec` でテスト動作の確認
 - [ ] README.md に必要な設定を記載
