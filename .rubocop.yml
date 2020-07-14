@@ -15,7 +15,7 @@ AllCops:
     - db/schema.rb
     - node_modules/**/*
     - vendor/**/*
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
 
 # ファイル丸ごとブロックに入りそうなファイルは行数制限から外す
 Metrics/BlockLength:
